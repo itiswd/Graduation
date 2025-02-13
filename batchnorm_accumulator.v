@@ -3,7 +3,7 @@ module batchnorm_accumulator #(parameter WIDTH=16, FRAC=8, BATCH_SIZE=10) (
     input rst,
     input [WIDTH-1:0] x_in, 
     output reg [WIDTH-1:0] mean,  
-    output reg [WIDTH-1:0] var    
+    output reg [WIDTH-1:0] varr    
 );
 
     reg [WIDTH-1:0] sum = 0;     
@@ -16,7 +16,7 @@ module batchnorm_accumulator #(parameter WIDTH=16, FRAC=8, BATCH_SIZE=10) (
             sum_sq <= 0;
             count <= 0;
             mean <= 0;
-            var <= 0;
+            varr <= 0;
         end else begin
             if (count < BATCH_SIZE) begin
                 sum <= sum + x_in;
@@ -27,7 +27,7 @@ module batchnorm_accumulator #(parameter WIDTH=16, FRAC=8, BATCH_SIZE=10) (
             end else begin
                 mean <= sum / BATCH_SIZE;
 
-                var <= (sum_sq / BATCH_SIZE) - (mean * mean);
+                varr <= (sum_sq / BATCH_SIZE) - (mean * mean);
 
                 sum <= 0;
                 sum_sq <= 0;
