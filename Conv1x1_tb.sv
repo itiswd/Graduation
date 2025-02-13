@@ -28,9 +28,9 @@ always #5 CLK = ~CLK ;
 integer i,j ;
     initial begin
       
-	   $dumpfile("Conv1x1.vcd");
-       $dumpvars;
-	   
+		$dumpfile("Conv1x1.vcd");
+		$dumpvars;
+		
 	    CLK = 0 ;
 	    RST = 0 ;
 		kernel = 8'b0;
