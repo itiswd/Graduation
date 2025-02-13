@@ -12,11 +12,11 @@ logic signed [2*width - 1:0] conv [0: rows-1][0: cols-1] ;
 integer i, j;
 always @(posedge CLK or negedge RST ) begin
     if (!RST) begin
-			for (i = 0; i < rows ; i = i + 1) begin
-				for (j = 0; j < cols ; j = j + 1) begin
-					pixel_out[i][j] <= 8'b0;
-				end
+		for (i = 0; i < rows ; i = i + 1) begin
+			for (j = 0; j < cols ; j = j + 1) begin
+				pixel_out[i][j] <= 8'b0;
 			end
+		end
     end else begin
         for (i = 0; i < rows ; i = i + 1) begin
             for (j = 0; j < cols ; j = j + 1) begin
@@ -24,8 +24,7 @@ always @(posedge CLK or negedge RST ) begin
                 conv[i][j] <= pixel_in[i][j] * kernel;			
 				pixel_out[i][j] <= conv[i][j][width-1 +4 :0 +4 ] ; //middle 8 bits for fixed point 
 				
-            end
-            
+            end           
         end
     end
 end
