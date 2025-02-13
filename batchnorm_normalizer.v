@@ -5,7 +5,7 @@ module batchnorm_normalizer #(parameter WIDTH=16, FRAC=8) (
     input [WIDTH-1:0] gamma, 
     input [WIDTH-1:0] beta,  
     input [WIDTH-1:0] mean,  
-    input [WIDTH-1:0] var ,   
+    input [WIDTH-1:0] var,   
     output reg [WIDTH-1:0] y_out 
 );
 
